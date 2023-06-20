@@ -40,6 +40,10 @@ const OrderEditActions = () => {
     client.post(`/orders/${order.id}/restart`);
   }, [client, order]);
 
+  const restartInference = useCallback(() => {
+    client.post(`/orders/${order.id}/restart-inference`);
+  }, [client, order]);
+
   return (
     <TopToolbar>
       <ShowButton />
@@ -47,6 +51,9 @@ const OrderEditActions = () => {
       <ListButton />
       <Button color="primary" onClick={restartTraining}>
         Restart Training
+      </Button>
+      <Button color="primary" onClick={restartInference}>
+        Restart Inference
       </Button>
     </TopToolbar>
   );
